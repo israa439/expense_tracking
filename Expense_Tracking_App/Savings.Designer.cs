@@ -155,7 +155,7 @@
             roundedButton1.BorderRadius = 20;
             roundedButton1.Cursor = Cursors.Hand;
             roundedButton1.ForeColor = Color.MediumSpringGreen;
-            roundedButton1.ForeColor1 = Color.MediumSpringGreen;
+         
             roundedButton1.Location = new Point(460, 560);
             roundedButton1.Name = "roundedButton1";
             roundedButton1.Size = new Size(81, 38);
@@ -221,7 +221,7 @@
             button1.BorderRadius = 20;
             button1.Cursor = Cursors.Hand;
             button1.ForeColor = Color.White;
-            button1.ForeColor1 = Color.White;
+           
             button1.Location = new Point(683, 420);
             button1.Name = "button1";
             button1.Size = new Size(81, 38);

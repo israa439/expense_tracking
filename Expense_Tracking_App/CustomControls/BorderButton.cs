@@ -8,7 +8,7 @@ namespace Expense_Tracking_App.CustomControls
     public class RoundedButton : Button
     {
         public int BorderRadius { get; set; } = 20;
-        public Color ForeColor1 { get => base.ForeColor; set { base.ForeColor = value;this.ForeColor1 = value;this.Invalidate(); } }
+       
 
        
 
