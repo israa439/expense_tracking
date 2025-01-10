@@ -122,5 +122,13 @@ namespace Expense_Tracking_App
         {
 
         }
+
+        private void addSchExpIcon_Click(object sender, EventArgs e)
+        {
+            SchExpenses nav = new SchExpenses();
+            this.Hide();
+            nav.Show();
+
+        }
     }
 }

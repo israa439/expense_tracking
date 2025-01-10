@@ -221,6 +221,7 @@ namespace Expense_Tracking_App
             addSchExpIcon.SizeMode = PictureBoxSizeMode.Zoom;
             addSchExpIcon.TabIndex = 5;
             addSchExpIcon.TabStop = false;
+            addSchExpIcon.Click += addSchExpIcon_Click;
             // 
             // sch_expenses_amout
             // 
