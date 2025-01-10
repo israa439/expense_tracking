@@ -32,7 +32,7 @@ namespace Expense_Tracking_App
             email_signup_label = new Label();
             password_signup_field = new TextBox();
             password_signup_label = new Label();
-            useername_signup_field = new TextBox();
+            username_signup_field = new TextBox();
             useername_signup_label = new Label();
             signupHeader = new Label();
             label1 = new Label();
@@ -54,7 +54,7 @@ namespace Expense_Tracking_App
             signUpContainer.Controls.Add(email_signup_label);
             signUpContainer.Controls.Add(password_signup_field);
             signUpContainer.Controls.Add(password_signup_label);
-            signUpContainer.Controls.Add(useername_signup_field);
+            signUpContainer.Controls.Add(username_signup_field);
             signUpContainer.Controls.Add(useername_signup_label);
             signUpContainer.Controls.Add(signupHeader);
             signUpContainer.Location = new Point(426, 68);
@@ -146,7 +146,6 @@ namespace Expense_Tracking_App
             password_signup_field.PasswordChar = '*';
             password_signup_field.Size = new Size(266, 41);
             password_signup_field.TabIndex = 4;
-            password_signup_field.TextChanged += password_signup_field_TextChanged;
             // 
             // password_signup_label
             // 
@@ -158,13 +157,13 @@ namespace Expense_Tracking_App
             password_signup_label.TabIndex = 3;
             password_signup_label.Text = "Password";
             // 
-            // useername_signup_field
+            // username_signup_field
             // 
-            useername_signup_field.Font = new System.Drawing.Font("Segoe UI", 15F);
-            useername_signup_field.Location = new Point(191, 162);
-            useername_signup_field.Name = "useername_signup_field";
-            useername_signup_field.Size = new Size(266, 41);
-            useername_signup_field.TabIndex = 2;
+            username_signup_field.Font = new System.Drawing.Font("Segoe UI", 15F);
+            username_signup_field.Location = new Point(191, 162);
+            username_signup_field.Name = "username_signup_field";
+            username_signup_field.Size = new Size(266, 41);
+            username_signup_field.TabIndex = 2;
             // 
             // useername_signup_label
             // 
@@ -219,7 +218,6 @@ namespace Expense_Tracking_App
             Name = "SignUp";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SignUpcs";
-            Click += SignUp_Click;
             signUpContainer.ResumeLayout(false);
             signUpContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -230,7 +228,7 @@ namespace Expense_Tracking_App
         private BorderedGroupBox signUpContainer;
         private Label signupHeader;
         private Label useername_signup_label;
-        private TextBox useername_signup_field;
+        private TextBox username_signup_field;
         private Label password_signup_label;
         private TextBox password_signup_field;
         private Label email_signup_label;

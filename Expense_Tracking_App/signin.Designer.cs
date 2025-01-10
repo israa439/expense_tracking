@@ -25,7 +25,7 @@ namespace Expense_Tracking_App
             password_signin_field = new TextBox();
             password_signin_label = new Label();
             text = new Label();
-            useername_signin_field = new TextBox();
+            username_signin_field = new TextBox();
             useername_signin_label = new Label();
             signinHeader = new Label();
             label1 = new Label();
@@ -43,7 +43,7 @@ namespace Expense_Tracking_App
             signInContainer.Controls.Add(password_signin_field);
             signInContainer.Controls.Add(password_signin_label);
             signInContainer.Controls.Add(text);
-            signInContainer.Controls.Add(useername_signin_field);
+            signInContainer.Controls.Add(username_signin_field);
             signInContainer.Controls.Add(useername_signin_label);
             signInContainer.Controls.Add(signinHeader);
             signInContainer.Font = new Font("Segoe UI", 15F);
@@ -110,15 +110,16 @@ namespace Expense_Tracking_App
             text.Size = new Size(291, 30);
             text.TabIndex = 3;
             text.Text = "If you don't have an account,";
-            text.Click += text_Click;
+            //text.Click += text_Click;
             // 
-            // useername_signin_field
+            // username_signin_field
             // 
-            useername_signin_field.Font = new Font("Segoe UI", 15F);
-            useername_signin_field.Location = new Point(193, 170);
-            useername_signin_field.Name = "useername_signin_field";
-            useername_signin_field.Size = new Size(266, 41);
-            useername_signin_field.TabIndex = 2;
+            username_signin_field.Font = new Font("Segoe UI", 15F);
+            username_signin_field.Location = new Point(193, 170);
+            username_signin_field.Name = "username_signin_field";
+            username_signin_field.Size = new Size(266, 41);
+            username_signin_field.TabIndex = 2;
+   
             // 
             // useername_signin_label
             // 
@@ -142,7 +143,7 @@ namespace Expense_Tracking_App
             signinHeader.Size = new Size(129, 43);
             signinHeader.TabIndex = 0;
             signinHeader.Text = "Sign In ";
-            signinHeader.Click += label1_Click;
+            //signinHeader.Click += label1_Click;
             // 
             // label1
             // 
@@ -179,7 +180,7 @@ namespace Expense_Tracking_App
             Name = "signin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
-            BackColorChanged += Auth_BackColorChanged;
+            //BackColorChanged += Auth_BackColorChanged;
             signInContainer.ResumeLayout(false);
             signInContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -191,7 +192,7 @@ namespace Expense_Tracking_App
         private Label signinHeader;
         private Label useername_signin_label;
         private Label password_signin_label;
-        private TextBox useername_signin_field;
+        private TextBox username_signin_field;
         private Label text;
         private TextBox password_signin_field;
         private Label navToSignup;

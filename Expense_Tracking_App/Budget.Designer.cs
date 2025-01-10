@@ -36,21 +36,24 @@
             label7 = new Label();
             label3 = new Label();
             label6 = new Label();
-            label16 = new Label();
+            Budget_amount = new Label();
             label5 = new Label();
             label8 = new Label();
             label9 = new Label();
-            textBox1 = new TextBox();
+            Transfered_budget_amount = new TextBox();
             label10 = new Label();
             label11 = new Label();
             label12 = new Label();
             label15 = new Label();
-            textBox2 = new TextBox();
+            Added_budget_amount = new TextBox();
             label13 = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            Transfer_to_savings = new CustomControls.RoundedButton();
+            Add_to_budget = new CustomControls.RoundedButton();
+            pictureBox3 = new PictureBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -101,7 +104,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Georgia", 13F, FontStyle.Bold);
             label7.ForeColor = Color.SlateGray;
-            label7.Location = new Point(12, 246);
+            label7.Location = new Point(12, 253);
             label7.Name = "label7";
             label7.Size = new Size(785, 27);
             label7.TabIndex = 16;
@@ -112,7 +115,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Georgia", 15F, FontStyle.Bold);
             label3.ForeColor = Color.MidnightBlue;
-            label3.Location = new Point(12, 286);
+            label3.Location = new Point(12, 290);
             label3.Name = "label3";
             label3.Size = new Size(411, 30);
             label3.TabIndex = 17;
@@ -123,29 +126,29 @@
             label6.AutoSize = true;
             label6.Font = new Font("Georgia", 15F, FontStyle.Bold);
             label6.ForeColor = Color.Crimson;
-            label6.Location = new Point(410, 286);
+            label6.Location = new Point(410, 290);
             label6.Name = "label6";
             label6.Size = new Size(71, 30);
             label6.TabIndex = 31;
             label6.Text = "USD";
             // 
-            // label16
+            // Budget_amount
             // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Georgia", 15F, FontStyle.Bold);
-            label16.ForeColor = Color.Crimson;
-            label16.Location = new Point(473, 286);
-            label16.Name = "label16";
-            label16.Size = new Size(107, 30);
-            label16.TabIndex = 32;
-            label16.Text = " 123.00";
+            Budget_amount.AutoSize = true;
+            Budget_amount.Font = new Font("Georgia", 15F, FontStyle.Bold);
+            Budget_amount.ForeColor = Color.Crimson;
+            Budget_amount.Location = new Point(473, 290);
+            Budget_amount.Name = "Budget_amount";
+            Budget_amount.Size = new Size(107, 30);
+            Budget_amount.TabIndex = 32;
+            Budget_amount.Text = " 123.00";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Georgia", 13F, FontStyle.Bold);
             label5.ForeColor = Color.SlateGray;
-            label5.Location = new Point(12, 363);
+            label5.Location = new Point(12, 382);
             label5.Name = "label5";
             label5.Size = new Size(709, 27);
             label5.TabIndex = 33;
@@ -156,7 +159,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Georgia", 15F, FontStyle.Bold);
             label8.ForeColor = Color.MidnightBlue;
-            label8.Location = new Point(12, 407);
+            label8.Location = new Point(17, 417);
             label8.Name = "label8";
             label8.Size = new Size(125, 30);
             label8.TabIndex = 34;
@@ -167,26 +170,26 @@
             label9.AutoSize = true;
             label9.Font = new Font("Georgia", 15F, FontStyle.Bold);
             label9.ForeColor = Color.Crimson;
-            label9.Location = new Point(138, 407);
+            label9.Location = new Point(143, 417);
             label9.Name = "label9";
             label9.Size = new Size(71, 30);
             label9.TabIndex = 36;
             label9.Text = "USD";
             // 
-            // textBox1
+            // Transfered_budget_amount
             // 
-            textBox1.Cursor = Cursors.Hand;
-            textBox1.Location = new Point(215, 407);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(142, 27);
-            textBox1.TabIndex = 37;
+            Transfered_budget_amount.Cursor = Cursors.Hand;
+            Transfered_budget_amount.Location = new Point(220, 417);
+            Transfered_budget_amount.Name = "Transfered_budget_amount";
+            Transfered_budget_amount.Size = new Size(142, 27);
+            Transfered_budget_amount.TabIndex = 37;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Georgia", 15F, FontStyle.Bold);
             label10.ForeColor = Color.MidnightBlue;
-            label10.Location = new Point(363, 407);
+            label10.Location = new Point(368, 417);
             label10.Name = "label10";
             label10.Size = new Size(310, 30);
             label10.TabIndex = 38;
@@ -197,7 +200,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Georgia", 13F, FontStyle.Bold);
             label11.ForeColor = Color.SlateGray;
-            label11.Location = new Point(12, 483);
+            label11.Location = new Point(19, 510);
             label11.Name = "label11";
             label11.Size = new Size(525, 27);
             label11.TabIndex = 39;
@@ -208,7 +211,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Georgia", 15F, FontStyle.Bold);
             label12.ForeColor = Color.MidnightBlue;
-            label12.Location = new Point(12, 523);
+            label12.Location = new Point(25, 537);
             label12.Name = "label12";
             label12.Size = new Size(66, 30);
             label12.TabIndex = 40;
@@ -219,67 +222,102 @@
             label15.AutoSize = true;
             label15.Font = new Font("Georgia", 15F, FontStyle.Bold);
             label15.ForeColor = Color.MidnightBlue;
-            label15.Location = new Point(309, 523);
+            label15.Location = new Point(322, 537);
             label15.Name = "label15";
             label15.Size = new Size(143, 30);
             label15.TabIndex = 45;
             label15.Text = "to Savings";
             // 
-            // textBox2
+            // Added_budget_amount
             // 
-            textBox2.Cursor = Cursors.Hand;
-            textBox2.Location = new Point(161, 526);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(142, 27);
-            textBox2.TabIndex = 44;
+            Added_budget_amount.Cursor = Cursors.Hand;
+            Added_budget_amount.Location = new Point(174, 540);
+            Added_budget_amount.Name = "Added_budget_amount";
+            Added_budget_amount.Size = new Size(142, 27);
+            Added_budget_amount.TabIndex = 44;
             // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Georgia", 15F, FontStyle.Bold);
             label13.ForeColor = Color.Crimson;
-            label13.Location = new Point(75, 523);
+            label13.Location = new Point(88, 537);
             label13.Name = "label13";
             label13.Size = new Size(71, 30);
             label13.TabIndex = 43;
             label13.Text = "USD";
             // 
-            // button1
+            // Transfer_to_savings
             // 
-            button1.Location = new Point(679, 408);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 46;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            Transfer_to_savings.BackColor = Color.CornflowerBlue;
+            Transfer_to_savings.BorderRadius = 20;
+            Transfer_to_savings.ForeColor = Color.White;
+            Transfer_to_savings.Location = new Point(684, 418);
+            Transfer_to_savings.Name = "Transfer_to_savings";
+            Transfer_to_savings.Size = new Size(81, 38);
+            Transfer_to_savings.TabIndex = 46;
+            Transfer_to_savings.Text = "Transfer";
+            Transfer_to_savings.UseVisualStyleBackColor = false;
+            Transfer_to_savings.Click += Transfer_to_savings_Click;
             // 
-            // button2
+            // Add_to_budget
             // 
-            button2.Location = new Point(458, 526);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 47;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            Add_to_budget.BackColor = Color.CornflowerBlue;
+            Add_to_budget.BorderRadius = 20;
+            Add_to_budget.ForeColor = Color.White;
+            Add_to_budget.Location = new Point(471, 540);
+            Add_to_budget.Name = "Add_to_budget";
+            Add_to_budget.Size = new Size(81, 38);
+            Add_to_budget.TabIndex = 47;
+            Add_to_budget.Text = "Add";
+            Add_to_budget.UseVisualStyleBackColor = false;
+            Add_to_budget.Click += Add_to_budget_Click;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Cursor = Cursors.Hand;
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(1063, 18);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(36, 32);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 48;
+            pictureBox3.TabStop = false;
+            pictureBox3.Click += pictureBox3_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Cursor = Cursors.Hand;
+            label2.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            label2.ForeColor = Color.MidnightBlue;
+            label2.Location = new Point(1099, 15);
+            label2.Name = "label2";
+            label2.Size = new Size(169, 32);
+            label2.TabIndex = 49;
+            label2.Text = "Back to home";
+            label2.Click += label2_Click;
             // 
             // Budget
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1280, 705);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(label2);
+            Controls.Add(pictureBox3);
+            Controls.Add(Add_to_budget);
+            Controls.Add(Transfer_to_savings);
             Controls.Add(label15);
-            Controls.Add(textBox2);
+            Controls.Add(Added_budget_amount);
             Controls.Add(label13);
             Controls.Add(label12);
             Controls.Add(label11);
             Controls.Add(label10);
-            Controls.Add(textBox1);
+            Controls.Add(Transfered_budget_amount);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label5);
-            Controls.Add(label16);
+            Controls.Add(Budget_amount);
             Controls.Add(label6);
             Controls.Add(label3);
             Controls.Add(label7);
@@ -289,8 +327,10 @@
             Controls.Add(label1);
             Name = "Budget";
             Text = "Budget";
+            Load += Budget_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -304,18 +344,20 @@
         private Label label7;
         private Label label3;
         private Label label6;
-        private Label label16;
+        private Label Budget_amount;
         private Label label5;
         private Label label8;
         private Label label9;
-        private TextBox textBox1;
+        private TextBox Transfered_budget_amount;
         private Label label10;
         private Label label11;
         private Label label12;
         private Label label15;
-        private TextBox textBox2;
+        private TextBox Added_budget_amount;
         private Label label13;
-        private Button button1;
-        private Button button2;
+        private CustomControls.RoundedButton Transfer_to_savings;
+        private CustomControls.RoundedButton Add_to_budget;
+        private PictureBox pictureBox3;
+        private Label label2;
     }
 }

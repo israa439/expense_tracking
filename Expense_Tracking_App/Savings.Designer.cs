@@ -35,23 +35,26 @@
             label14 = new Label();
             label7 = new Label();
             label3 = new Label();
-            label16 = new Label();
+            savings_amount = new Label();
             label6 = new Label();
             label4 = new Label();
-            roundedButton1 = new CustomControls.RoundedButton();
+            Add_to_savings = new CustomControls.RoundedButton();
             label15 = new Label();
-            textBox2 = new TextBox();
+            Added_savings_amount = new TextBox();
             label13 = new Label();
             label12 = new Label();
             label11 = new Label();
-            button1 = new CustomControls.RoundedButton();
+            Transfer_to_budget = new CustomControls.RoundedButton();
             label10 = new Label();
             label9 = new Label();
-            textBox1 = new TextBox();
+            Transfered_savings_amount = new TextBox();
             label8 = new Label();
             label5 = new Label();
+            label2 = new Label();
+            pictureBox3 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -119,16 +122,16 @@
             label3.TabIndex = 16;
             label3.Text = "Your total savings are: ";
             // 
-            // label16
+            // savings_amount
             // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Georgia", 15F, FontStyle.Bold);
-            label16.ForeColor = Color.Crimson;
-            label16.Location = new Point(371, 295);
-            label16.Name = "label16";
-            label16.Size = new Size(107, 30);
-            label16.TabIndex = 31;
-            label16.Text = " 123.00";
+            savings_amount.AutoSize = true;
+            savings_amount.Font = new Font("Georgia", 15F, FontStyle.Bold);
+            savings_amount.ForeColor = Color.Crimson;
+            savings_amount.Location = new Point(371, 295);
+            savings_amount.Name = "savings_amount";
+            savings_amount.Size = new Size(107, 30);
+            savings_amount.TabIndex = 31;
+            savings_amount.Text = " 123.00";
             // 
             // label6
             // 
@@ -149,19 +152,19 @@
             label4.Size = new Size(0, 20);
             label4.TabIndex = 29;
             // 
-            // roundedButton1
+            // Add_to_savings
             // 
-            roundedButton1.BackColor = Color.CornflowerBlue;
-            roundedButton1.BorderRadius = 20;
-            roundedButton1.Cursor = Cursors.Hand;
-            roundedButton1.ForeColor = Color.MediumSpringGreen;
-         
-            roundedButton1.Location = new Point(460, 560);
-            roundedButton1.Name = "roundedButton1";
-            roundedButton1.Size = new Size(81, 38);
-            roundedButton1.TabIndex = 43;
-            roundedButton1.Text = "Add";
-            roundedButton1.UseVisualStyleBackColor = false;
+            Add_to_savings.BackColor = Color.CornflowerBlue;
+            Add_to_savings.BorderRadius = 20;
+            Add_to_savings.Cursor = Cursors.Hand;
+            Add_to_savings.ForeColor = Color.White;
+            Add_to_savings.Location = new Point(460, 560);
+            Add_to_savings.Name = "Add_to_savings";
+            Add_to_savings.Size = new Size(81, 38);
+            Add_to_savings.TabIndex = 43;
+            Add_to_savings.Text = "Add";
+            Add_to_savings.UseVisualStyleBackColor = false;
+            Add_to_savings.Click += Add_to_savings_Click;
             // 
             // label15
             // 
@@ -174,13 +177,13 @@
             label15.TabIndex = 42;
             label15.Text = "to Savings";
             // 
-            // textBox2
+            // Added_savings_amount
             // 
-            textBox2.Cursor = Cursors.Hand;
-            textBox2.Location = new Point(171, 566);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(142, 27);
-            textBox2.TabIndex = 41;
+            Added_savings_amount.Cursor = Cursors.Hand;
+            Added_savings_amount.Location = new Point(171, 566);
+            Added_savings_amount.Name = "Added_savings_amount";
+            Added_savings_amount.Size = new Size(142, 27);
+            Added_savings_amount.TabIndex = 41;
             // 
             // label13
             // 
@@ -215,19 +218,19 @@
             label11.TabIndex = 38;
             label11.Text = "Would you like to add money to your savings?";
             // 
-            // button1
+            // Transfer_to_budget
             // 
-            button1.BackColor = Color.CornflowerBlue;
-            button1.BorderRadius = 20;
-            button1.Cursor = Cursors.Hand;
-            button1.ForeColor = Color.White;
-           
-            button1.Location = new Point(683, 420);
-            button1.Name = "button1";
-            button1.Size = new Size(81, 38);
-            button1.TabIndex = 37;
-            button1.Text = "Transfer";
-            button1.UseVisualStyleBackColor = false;
+            Transfer_to_budget.BackColor = Color.CornflowerBlue;
+            Transfer_to_budget.BorderRadius = 20;
+            Transfer_to_budget.Cursor = Cursors.Hand;
+            Transfer_to_budget.ForeColor = Color.White;
+            Transfer_to_budget.Location = new Point(683, 420);
+            Transfer_to_budget.Name = "Transfer_to_budget";
+            Transfer_to_budget.Size = new Size(81, 38);
+            Transfer_to_budget.TabIndex = 37;
+            Transfer_to_budget.Text = "Transfer";
+            Transfer_to_budget.UseVisualStyleBackColor = false;
+            Transfer_to_budget.Click += Transfer_to_budget_Click;
             // 
             // label10
             // 
@@ -251,13 +254,13 @@
             label9.TabIndex = 35;
             label9.Text = "USD";
             // 
-            // textBox1
+            // Transfered_savings_amount
             // 
-            textBox1.Cursor = Cursors.Hand;
-            textBox1.Location = new Point(219, 424);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(142, 27);
-            textBox1.TabIndex = 34;
+            Transfered_savings_amount.Cursor = Cursors.Hand;
+            Transfered_savings_amount.Location = new Point(219, 424);
+            Transfered_savings_amount.Name = "Transfered_savings_amount";
+            Transfered_savings_amount.Size = new Size(142, 27);
+            Transfered_savings_amount.TabIndex = 34;
             // 
             // label8
             // 
@@ -281,24 +284,49 @@
             label5.TabIndex = 32;
             label5.Text = "Would you like to transfer from your savings to your budget?";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            label2.ForeColor = Color.MidnightBlue;
+            label2.Location = new Point(1099, 15);
+            label2.Name = "label2";
+            label2.Size = new Size(169, 32);
+            label2.TabIndex = 51;
+            label2.Text = "Back to home";
+            label2.Click += label2_Click;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(1063, 18);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(36, 32);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 50;
+            pictureBox3.TabStop = false;
+            pictureBox3.Click += pictureBox3_Click;
+            // 
             // Savings
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1280, 705);
-            Controls.Add(roundedButton1);
+            Controls.Add(label2);
+            Controls.Add(pictureBox3);
+            Controls.Add(Add_to_savings);
             Controls.Add(label15);
-            Controls.Add(textBox2);
+            Controls.Add(Added_savings_amount);
             Controls.Add(label13);
             Controls.Add(label12);
             Controls.Add(label11);
-            Controls.Add(button1);
+            Controls.Add(Transfer_to_budget);
             Controls.Add(label10);
             Controls.Add(label9);
-            Controls.Add(textBox1);
+            Controls.Add(Transfered_savings_amount);
             Controls.Add(label8);
             Controls.Add(label5);
-            Controls.Add(label16);
+            Controls.Add(savings_amount);
             Controls.Add(label6);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -307,10 +335,13 @@
             Controls.Add(label14);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
+            Cursor = Cursors.Hand;
             Name = "Savings";
             Text = "Savings";
+            Load += Savings_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -323,20 +354,22 @@
         private Label label14;
         private Label label7;
         private Label label3;
-        private Label label16;
+        private Label savings_amount;
         private Label label6;
         private Label label4;
-        private CustomControls.RoundedButton roundedButton1;
+        private CustomControls.RoundedButton Add_to_savings;
         private Label label15;
-        private TextBox textBox2;
+        private TextBox Added_savings_amount;
         private Label label13;
         private Label label12;
         private Label label11;
-        private CustomControls.RoundedButton button1;
+        private CustomControls.RoundedButton Transfer_to_budget;
         private Label label10;
         private Label label9;
-        private TextBox textBox1;
+        private TextBox Transfered_savings_amount;
         private Label label8;
         private Label label5;
+        private Label label2;
+        private PictureBox pictureBox3;
     }
 }
