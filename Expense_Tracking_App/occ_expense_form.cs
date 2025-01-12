@@ -10,23 +10,16 @@ using System.Windows.Forms;
 
 namespace Expense_Tracking_App
 {
-    public partial class sch_expense_form : Form
+    public partial class occ_expense_form : Form
     {
         public string ExpenseName { get; private set; }
         public decimal ExpenseAmount { get; private set; }
-
-        public sch_expense_form()
+        public occ_expense_form()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
         }
-
-        private void txtExpenseName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void btnAddExpense_Click(object sender, EventArgs e)
         {
@@ -54,7 +47,7 @@ namespace Expense_Tracking_App
 
         }
 
-        private void sch_expense_form_Load(object sender, EventArgs e)
+        private void occ_expense_form_Load(object sender, EventArgs e)
         {
 
         }

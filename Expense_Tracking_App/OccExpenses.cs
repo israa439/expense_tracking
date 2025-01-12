@@ -9,58 +9,57 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Expense_Tracking_App.Database;
 using Expense_Tracking_App.Shared;
-using Microsoft.VisualBasic.ApplicationServices;
 
 namespace Expense_Tracking_App
 {
-    public partial class SchExpenses : Form
+    public partial class OccExpenses : Form
     {
         private queryExecutor queryExecutor;
-        public SchExpenses()
+        public OccExpenses()
         {
             InitializeComponent();
             queryExecutor = new queryExecutor();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+        }
 
-        }
-        private void label2_Click(object sender, EventArgs e)
-        {
-            Home nav = new Home();
-            this.Hide();
-            nav.Show();
-        }
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             Home nav = new Home();
             this.Hide();
             nav.Show();
         }
-        private void SchExpenses_Load(object sender, EventArgs e)
+
+        private void label2_Click(object sender, EventArgs e)
         {
-            LoadScheduledExpensesAsCards();
+            Home nav = new Home();
+            this.Hide();
+            nav.Show();
         }
-        public ScheduledExpense[] Get_Sch_Expenses(int userId)
+        private void OccExpenses_Load(object sender, EventArgs e)
+        {
+            LoadOccasionalExpensesAsCards();
+        }
+        public OccasionalExpense[] Get_Occ_Expenses(int userId)
         {
             string query = @"
-        SELECT sch_expense_name AS SchExpenseName, 
-               sch_expense_amount AS SchExpenseAmount, 
-               user_id AS UserId
-               FROM [Scheduled_Expenses]
-               WHERE user_id = @UserId;
+    SELECT occ_expense_name AS OccExpenseName, 
+           occ_expense_amount AS OccExpenseAmount, 
+           occ_expense_month AS OccExpenseMonth, 
+           user_id AS UserId
+    FROM [Occasional_Expenses]
+    WHERE user_id = @UserId AND MONTH(occ_expense_month) = MONTH(GETDATE()) AND YEAR(occ_expense_month) = YEAR(GETDATE());
     ";
-            var results = queryExecutor.ExecuteSelectQuery<ScheduledExpense>(query, new { UserId = userId });
+            var results = queryExecutor.ExecuteSelectQuery<OccasionalExpense>(query, new { UserId = userId });
             return results.ToArray();
         }
 
-        private void LoadScheduledExpensesAsCards()
+        private void LoadOccasionalExpensesAsCards()
         {
             try
             {
-                panelScheduledExpenses.Controls.Clear();
-                var expenses = Get_Sch_Expenses(UserInfo.UserId);
-
-               
+                panelOccasionalExpenses.Controls.Clear();
+                var expenses = Get_Occ_Expenses(UserInfo.UserId);
 
                 int cardWidth = 300;
                 int cardHeight = 110;
@@ -73,7 +72,6 @@ namespace Expense_Tracking_App
 
                 foreach (var expense in expenses)
                 {
-
                     RoundedPanel card = new RoundedPanel
                     {
                         Size = new Size(cardWidth, cardHeight),
@@ -82,7 +80,6 @@ namespace Expense_Tracking_App
                         BorderColor = Color.Gray,
                         Location = new Point(x, y + 20)
                     };
-
 
                     Button deleteButton = new Button
                     {
@@ -98,13 +95,13 @@ namespace Expense_Tracking_App
 
                     deleteButton.Click += (sender, e) =>
                     {
-                        DeleteScheduledExpense(UserInfo.UserId, expense.SchExpenseName, card);
-                        LoadScheduledExpensesAsCards();
+                        DeleteOccasionalExpense(UserInfo.UserId, expense.OccExpenseName, card);
+                        LoadOccasionalExpensesAsCards();
                     };
 
                     Label nameLabel = new Label
                     {
-                        Text = $"Expense: {expense.SchExpenseName}",
+                        Text = $"Expense: {expense.OccExpenseName}",
                         Location = new Point(10, 10),
                         Size = new Size(300, 30),
                         ForeColor = Color.White,
@@ -115,7 +112,7 @@ namespace Expense_Tracking_App
 
                     Label amountLabel = new Label
                     {
-                        Text = $"Amount: {expense.SchExpenseAmount:C}",
+                        Text = $"Amount: {expense.OccExpenseAmount:C}",
                         Location = new Point(10, 60),
                         Size = new Size(200, 25),
                         ForeColor = Color.White,
@@ -124,14 +121,11 @@ namespace Expense_Tracking_App
                         TextAlign = ContentAlignment.MiddleLeft
                     };
 
-
-
                     card.Controls.Add(deleteButton);
                     card.Controls.Add(nameLabel);
                     card.Controls.Add(amountLabel);
 
-
-                    panelScheduledExpenses.Controls.Add(card);
+                    panelOccasionalExpenses.Controls.Add(card);
 
                     count++;
                     if (count % cardsPerRow == 0)
@@ -151,11 +145,10 @@ namespace Expense_Tracking_App
             }
         }
 
-        private void DeleteScheduledExpense(int userId, string expenseName, Panel card)
+        private void DeleteOccasionalExpense(int userId, string expenseName, Panel card)
         {
             try
             {
-
                 var result = MessageBox.Show($"Are you sure you want to delete '{expenseName}'?",
                                              "Confirm Delete",
                                              MessageBoxButtons.YesNo,
@@ -163,10 +156,9 @@ namespace Expense_Tracking_App
 
                 if (result == DialogResult.Yes)
                 {
-
                     string query = @"
-                DELETE FROM [Scheduled_Expenses]
-                WHERE user_id = @UserId AND sch_expense_name = @ExpenseName;
+            DELETE FROM [Occasional_Expenses]
+            WHERE user_id = @UserId AND occ_expense_name = @ExpenseName;
             ";
 
                     // Execute the delete query
@@ -175,7 +167,7 @@ namespace Expense_Tracking_App
                     if (rowsAffected > 0)
                     {
                         // Remove the card from the panel
-                        panelScheduledExpenses.Controls.Remove(card);
+                        panelOccasionalExpenses.Controls.Remove(card);
                     }
                     else
                     {
@@ -189,33 +181,34 @@ namespace Expense_Tracking_App
             }
         }
 
-        private void Display_sch_form()
+        private void Display_occ_form()
         {
-            using (sch_expense_form popup = new sch_expense_form())
+            using (occ_expense_form popup = new occ_expense_form())
             {
                 if (popup.ShowDialog() == DialogResult.OK)
                 {
-
                     string expenseName = popup.ExpenseName;
                     decimal expenseAmount = popup.ExpenseAmount;
-                  
+                    DateTime expenseMonth = DateTime.Now;
 
                     try
                     {
+                        
                         if (expenseAmount > UserInfo.budget)
                         {
                             MessageBox.Show("The budget is not sufficient for this expense.", "Insufficient Budget", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
+                            return; 
                         }
 
                         string query = @"
-            INSERT INTO Scheduled_Expenses (user_id, sch_expense_name, sch_expense_amount)
-            VALUES (@UserId, @ExpenseName, @ExpenseAmount)";
+                INSERT INTO Occasional_Expenses (user_id, occ_expense_name, occ_expense_amount, occ_expense_month)
+                VALUES (@UserId, @ExpenseName, @ExpenseAmount, @ExpenseMonth)";
                         queryExecutor.ExecuteNonQuery(query, new
                         {
                             UserId = UserInfo.UserId,
                             ExpenseName = expenseName,
-                            ExpenseAmount = expenseAmount
+                            ExpenseAmount = expenseAmount,
+                            ExpenseMonth = expenseMonth
                         });
 
                         string updateBudgetQuery = @"
@@ -228,7 +221,7 @@ namespace Expense_Tracking_App
                             UserId = UserInfo.UserId,
                             ExpenseAmount = expenseAmount
                         });
-                        LoadScheduledExpensesAsCards();
+                        LoadOccasionalExpensesAsCards();
                     }
                     catch (Exception ex)
                     {
@@ -241,31 +234,26 @@ namespace Expense_Tracking_App
                         }
                         else
                         {
-                            // Default error message for other exceptions
                             MessageBox.Show($"An error occurred: {ex.Message}",
                                             "Error",
                                             MessageBoxButtons.OK,
                                             MessageBoxIcon.Error);
                         }
                     }
-
-
-
-
-                 
                 }
             }
         }
 
-        private void add_sch_exp_icon_Click_1(object sender, EventArgs e)
+        private void add_sch_exp_icon_Click(object sender, EventArgs e)
         {
-            Display_sch_form();
+            Display_occ_form();
         }
+
         private void label3_Click(object sender, EventArgs e)
         {
-            Display_sch_form();
+            Display_occ_form();
         }
 
-
+       
     }
 }

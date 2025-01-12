@@ -61,7 +61,7 @@ namespace Expense_Tracking_App
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(4, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(75, 76);
+            pictureBox1.Size = new Size(86, 85);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -72,7 +72,7 @@ namespace Expense_Tracking_App
             label1.BackColor = SystemColors.Control;
             label1.Font = new Font("Dubai", 23F, FontStyle.Bold);
             label1.ForeColor = Color.MidnightBlue;
-            label1.Location = new Point(82, 8);
+            label1.Location = new Point(91, 8);
             label1.Name = "label1";
             label1.Size = new Size(160, 66);
             label1.TabIndex = 1;
@@ -86,7 +86,7 @@ namespace Expense_Tracking_App
             groupBox1.Controls.Add(Budget_amount);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(10, 112);
+            groupBox1.Location = new Point(9, 129);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(254, 76);
             groupBox1.TabIndex = 2;
@@ -145,7 +145,7 @@ namespace Expense_Tracking_App
             borderedGroupBox1.Controls.Add(Savings_amount);
             borderedGroupBox1.Controls.Add(label6);
             borderedGroupBox1.Controls.Add(label7);
-            borderedGroupBox1.Location = new Point(328, 112);
+            borderedGroupBox1.Location = new Point(327, 129);
             borderedGroupBox1.Name = "borderedGroupBox1";
             borderedGroupBox1.Size = new Size(254, 76);
             borderedGroupBox1.TabIndex = 3;
@@ -206,7 +206,7 @@ namespace Expense_Tracking_App
             borderedGroupBox2.Controls.Add(sch_expenses_amout);
             borderedGroupBox2.Controls.Add(label9);
             borderedGroupBox2.Controls.Add(label10);
-            borderedGroupBox2.Location = new Point(638, 112);
+            borderedGroupBox2.Location = new Point(637, 129);
             borderedGroupBox2.Name = "borderedGroupBox2";
             borderedGroupBox2.Size = new Size(254, 76);
             borderedGroupBox2.TabIndex = 4;
@@ -266,7 +266,7 @@ namespace Expense_Tracking_App
             borderedGroupBox3.Controls.Add(occ_expenses_amount);
             borderedGroupBox3.Controls.Add(label12);
             borderedGroupBox3.Controls.Add(label13);
-            borderedGroupBox3.Location = new Point(971, 112);
+            borderedGroupBox3.Location = new Point(970, 129);
             borderedGroupBox3.Name = "borderedGroupBox3";
             borderedGroupBox3.Size = new Size(254, 76);
             borderedGroupBox3.TabIndex = 5;
@@ -282,6 +282,7 @@ namespace Expense_Tracking_App
             AddOccExpIcon.SizeMode = PictureBoxSizeMode.Zoom;
             AddOccExpIcon.TabIndex = 5;
             AddOccExpIcon.TabStop = false;
+            AddOccExpIcon.Click += AddOccExpIcon_Click;
             // 
             // occ_expenses_amount
             // 
@@ -322,7 +323,7 @@ namespace Expense_Tracking_App
             label14.AutoSize = true;
             label14.Font = new Font("Georgia", 18F, FontStyle.Bold);
             label14.ForeColor = Color.MidnightBlue;
-            label14.Location = new Point(10, 234);
+            label14.Location = new Point(9, 251);
             label14.Name = "label14";
             label14.Size = new Size(298, 35);
             label14.TabIndex = 6;
@@ -343,7 +344,7 @@ namespace Expense_Tracking_App
             Font = new Font("Parchment", 9F);
             Name = "Home";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Home";
             Load += Home_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);

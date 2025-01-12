@@ -19,6 +19,8 @@ namespace Expense_Tracking_App
         {
             InitializeComponent();
             queryExecutor = new queryExecutor();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)

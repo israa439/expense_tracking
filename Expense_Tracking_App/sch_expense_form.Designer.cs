@@ -111,6 +111,7 @@
             Name = "sch_expense_form";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "sch_expense_form";
+            Load += sch_expense_form_Load;
             ResumeLayout(false);
             PerformLayout();
         }

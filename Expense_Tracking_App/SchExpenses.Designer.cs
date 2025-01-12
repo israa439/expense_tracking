@@ -92,7 +92,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(20, 137);
+            pictureBox2.Location = new Point(12, 136);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(68, 60);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -104,7 +104,7 @@
             label14.AutoSize = true;
             label14.Font = new Font("Georgia", 20F, FontStyle.Bold);
             label14.ForeColor = Color.MidnightBlue;
-            label14.Location = new Point(89, 147);
+            label14.Location = new Point(81, 146);
             label14.Name = "label14";
             label14.Size = new Size(370, 39);
             label14.TabIndex = 54;
@@ -115,14 +115,14 @@
             panelScheduledExpenses.AutoScroll = true;
             panelScheduledExpenses.Location = new Point(2, 281);
             panelScheduledExpenses.Name = "panelScheduledExpenses";
-            panelScheduledExpenses.Size = new Size(1277, 425);
+            panelScheduledExpenses.Size = new Size(1331, 425);
             panelScheduledExpenses.TabIndex = 56;
             // 
             // add_sch_exp_icon
             // 
             add_sch_exp_icon.Cursor = Cursors.Hand;
             add_sch_exp_icon.Image = (Image)resources.GetObject("add_sch_exp_icon.Image");
-            add_sch_exp_icon.Location = new Point(990, 198);
+            add_sch_exp_icon.Location = new Point(982, 197);
             add_sch_exp_icon.Name = "add_sch_exp_icon";
             add_sch_exp_icon.Size = new Size(45, 34);
             add_sch_exp_icon.SizeMode = PictureBoxSizeMode.Zoom;
@@ -136,7 +136,7 @@
             label3.Cursor = Cursors.Hand;
             label3.Font = new Font("Dubai", 13F, FontStyle.Bold);
             label3.ForeColor = Color.SlateGray;
-            label3.Location = new Point(1028, 198);
+            label3.Location = new Point(1020, 197);
             label3.Name = "label3";
             label3.Size = new Size(240, 37);
             label3.TabIndex = 58;

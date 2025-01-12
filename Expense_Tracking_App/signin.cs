@@ -12,6 +12,8 @@ namespace Expense_Tracking_App
             InitializeComponent();
             this.Load += new System.EventHandler(this.Auth_Load);
             queryExecutor = new queryExecutor();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
 
         }
 
