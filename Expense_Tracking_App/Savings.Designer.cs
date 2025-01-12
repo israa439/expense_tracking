@@ -289,7 +289,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label2.ForeColor = Color.MidnightBlue;
-            label2.Location = new Point(1099, 15);
+            label2.Location = new Point(1154, 9);
             label2.Name = "label2";
             label2.Size = new Size(169, 32);
             label2.TabIndex = 51;
@@ -299,7 +299,7 @@
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(1063, 18);
+            pictureBox3.Location = new Point(1112, 9);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(36, 32);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
@@ -311,7 +311,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1280, 705);
+            ClientSize = new Size(1345, 747);
             Controls.Add(label2);
             Controls.Add(pictureBox3);
             Controls.Add(Add_to_savings);
@@ -337,6 +337,7 @@
             Controls.Add(pictureBox1);
             Cursor = Cursors.Hand;
             Name = "Savings";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Savings";
             Load += Savings_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

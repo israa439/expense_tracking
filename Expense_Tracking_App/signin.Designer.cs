@@ -110,7 +110,6 @@ namespace Expense_Tracking_App
             text.Size = new Size(291, 30);
             text.TabIndex = 3;
             text.Text = "If you don't have an account,";
-            //text.Click += text_Click;
             // 
             // username_signin_field
             // 
@@ -119,7 +118,6 @@ namespace Expense_Tracking_App
             username_signin_field.Name = "username_signin_field";
             username_signin_field.Size = new Size(266, 41);
             username_signin_field.TabIndex = 2;
-   
             // 
             // useername_signin_label
             // 
@@ -143,7 +141,6 @@ namespace Expense_Tracking_App
             signinHeader.Size = new Size(129, 43);
             signinHeader.TabIndex = 0;
             signinHeader.Text = "Sign In ";
-            //signinHeader.Click += label1_Click;
             // 
             // label1
             // 
@@ -180,7 +177,6 @@ namespace Expense_Tracking_App
             Name = "signin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
-            //BackColorChanged += Auth_BackColorChanged;
             signInContainer.ResumeLayout(false);
             signInContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

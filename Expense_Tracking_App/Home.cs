@@ -27,17 +27,75 @@ namespace Expense_Tracking_App
             try
             {
                 int currentMonth = DateTime.Now.Month;
+                int currentYear = DateTime.Now.Year;
                 int userId = UserInfo.UserId;
+                //  Check if the current month is a new month
+                string latestBudgetQuery = @"
+    SELECT Budget_amount, Budget_month 
+    FROM Budget 
+    WHERE user_id = @UserId 
+    ORDER BY Budget_month DESC 
+    LIMIT 1";
+                var latestBudgetResult = queryExecutor.ExecuteSelectQuery<(decimal BudgetAmount, DateTime BudgetMonth)>(
+    latestBudgetQuery,
+    new { UserId = userId });
 
-                string Budgetquery = @"
-                                    SELECT Budget_amount 
-                                    FROM Budget 
-                                    WHERE user_id = @UserId AND MONTH(Budget_month) = @Month";
-                var Budgetresult = queryExecutor.ExecuteSelectQuery<decimal>(Budgetquery, new { UserId = userId, Month = currentMonth });
-                if (Budgetresult != null && Budgetresult.Any())
+
+                if (latestBudgetResult != null && latestBudgetResult.Any())
                 {
-                    UserInfo.budget = Budgetresult.First();
-                    Budget_amount.Text = (UserInfo.budget).ToString();
+                    var latestBudget = latestBudgetResult.First();
+                    DateTime lastBudgetMonth = latestBudget.BudgetMonth;
+
+                    if (lastBudgetMonth.Month != currentMonth || lastBudgetMonth.Year != currentYear)
+                    {
+                        // Add leftover budget to savings
+                        decimal leftoverBudget = latestBudget.BudgetAmount;
+
+                        if (leftoverBudget > 0)
+                        {
+                            string addToSavingsQuery = @"
+                UPDATE Savings 
+                SET Savings_amount = Savings_amount + @LeftoverBudget
+                WHERE user_id = @UserId";
+                            queryExecutor.ExecuteNonQuery(addToSavingsQuery, new { LeftoverBudget = leftoverBudget, UserId = userId });
+                        }
+
+                        // Reset budget to 0 for the new month
+                        string resetBudgetQuery = @"
+            UPDATE Budget 
+            SET Budget_amount = 0 
+            WHERE user_id = @UserId AND Budget_month = @LastBudgetMonth";
+                        queryExecutor.ExecuteNonQuery(resetBudgetQuery, new { UserId = userId, LastBudgetMonth = lastBudgetMonth });
+
+                        // Deduct scheduled expenses from the new budget
+                        string scheduledExpensesQuery = @"
+            SELECT SUM(sch_expense_amount) 
+            FROM Scheduled_Expenses 
+            WHERE user_id = @UserId";
+                        var scheduledExpensesResult = queryExecutor.ExecuteSelectQuery<decimal>(
+                            scheduledExpensesQuery,
+                            new { UserId = userId });
+
+                        decimal scheduledExpenses = scheduledExpensesResult.FirstOrDefault();
+                        decimal newBudget = -scheduledExpenses;
+
+                        // Update the budget for the new month
+                        string updateBudgetQuery = @"
+            INSERT INTO Budget (user_id, Budget_month, Budget_amount) 
+            VALUES (@UserId, @CurrentDate, @NewBudget)";
+                        queryExecutor.ExecuteNonQuery(updateBudgetQuery,
+                            new { UserId = userId, CurrentDate = DateTime.Now, NewBudget = newBudget });
+
+
+                        UserInfo.budget = newBudget;
+                        Budget_amount.Text = newBudget.ToString();
+                    }
+                    else
+                    {
+
+                        UserInfo.budget = latestBudget.BudgetAmount;
+                        Budget_amount.Text = UserInfo.budget.ToString();
+                    }
                 }
                 else
                 {
@@ -128,6 +186,11 @@ namespace Expense_Tracking_App
             SchExpenses nav = new SchExpenses();
             this.Hide();
             nav.Show();
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
 
         }
     }

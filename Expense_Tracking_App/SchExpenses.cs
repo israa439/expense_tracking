@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Expense_Tracking_App.Database;
 using Expense_Tracking_App.Shared;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace Expense_Tracking_App
 {
@@ -54,16 +55,18 @@ namespace Expense_Tracking_App
         {
             try
             {
-                var expenses = Get_Sch_Expenses(UserInfo.UserId);
                 panelScheduledExpenses.Controls.Clear();
+                var expenses = Get_Sch_Expenses(UserInfo.UserId);
 
-                int cardWidth = 300; 
-                int cardHeight = 80; 
-                int padding = 10; 
-                int cardsPerRow = 4; 
+               
 
-                int x = padding; 
-                int y = padding; 
+                int cardWidth = 300;
+                int cardHeight = 110;
+                int padding = 10;
+                int cardsPerRow = 4;
+
+                int x = padding;
+                int y = padding;
                 int count = 0;
 
                 foreach (var expense in expenses)
@@ -72,10 +75,10 @@ namespace Expense_Tracking_App
                     RoundedPanel card = new RoundedPanel
                     {
                         Size = new Size(cardWidth, cardHeight),
-                        BorderRadius = 10,
-                        BackgroundColor = Color.CornflowerBlue,
+                        BorderRadius = 25,
+                        BackgroundColor = Color.RoyalBlue,
                         BorderColor = Color.Gray,
-                        Location = new Point(x, y+20)
+                        Location = new Point(x, y + 20)
                     };
 
 
@@ -83,9 +86,9 @@ namespace Expense_Tracking_App
                     {
                         Size = new Size(30, 30),
                         Location = new Point(cardWidth - 35, 5),
-                        BackColor = Color.Transparent, 
-                        FlatStyle = FlatStyle.Flat,    
-                        BackgroundImage = Image.FromFile("C:\\Users\\lenovo\\source\\repos\\Expense_Tracking_App\\Expense_Tracking_App\\Resources\\x_icon.png"), 
+                        BackColor = Color.Transparent,
+                        FlatStyle = FlatStyle.Flat,
+                        BackgroundImage = Image.FromFile("C:\\Users\\lenovo\\source\\repos\\Expense_Tracking_App\\Expense_Tracking_App\\Resources\\x_icon.png"),
                         BackgroundImageLayout = ImageLayout.Stretch,
                         Cursor = Cursors.Hand
                     };
@@ -101,42 +104,42 @@ namespace Expense_Tracking_App
                     {
                         Text = $"Expense: {expense.SchExpenseName}",
                         Location = new Point(10, 10),
-                        Size = new Size(200, 25),
+                        Size = new Size(300, 30),
                         ForeColor = Color.White,
-                        BackColor = Color.CornflowerBlue, 
-                        Font = new Font("Dubai", 13, FontStyle.Bold), 
-                        TextAlign = ContentAlignment.MiddleLeft 
+                        BackColor = Color.RoyalBlue,
+                        Font = new Font("Dubai", 13, FontStyle.Bold),
+                        TextAlign = ContentAlignment.MiddleLeft
                     };
 
                     Label amountLabel = new Label
                     {
                         Text = $"Amount: {expense.SchExpenseAmount:C}",
-                        Location = new Point(10, 40),
+                        Location = new Point(10, 60),
                         Size = new Size(200, 25),
                         ForeColor = Color.White,
-                        BackColor = Color.CornflowerBlue, 
+                        BackColor = Color.RoyalBlue,
                         Font = new Font("Dubai", 13, FontStyle.Bold),
                         TextAlign = ContentAlignment.MiddleLeft
                     };
 
 
-                    
+
                     card.Controls.Add(deleteButton);
                     card.Controls.Add(nameLabel);
                     card.Controls.Add(amountLabel);
 
-                  
+
                     panelScheduledExpenses.Controls.Add(card);
 
                     count++;
                     if (count % cardsPerRow == 0)
                     {
                         x = padding;
-                        y += cardHeight + padding+20; 
+                        y += cardHeight + padding + 20;
                     }
                     else
                     {
-                        x += cardWidth + padding; 
+                        x += cardWidth + padding;
                     }
                 }
             }
@@ -150,7 +153,7 @@ namespace Expense_Tracking_App
         {
             try
             {
-              
+
                 var result = MessageBox.Show($"Are you sure you want to delete '{expenseName}'?",
                                              "Confirm Delete",
                                              MessageBoxButtons.YesNo,
@@ -158,7 +161,7 @@ namespace Expense_Tracking_App
 
                 if (result == DialogResult.Yes)
                 {
-                    
+
                     string query = @"
                 DELETE FROM [Scheduled_Expenses]
                 WHERE user_id = @UserId AND sch_expense_name = @ExpenseName;
@@ -184,6 +187,66 @@ namespace Expense_Tracking_App
             }
         }
 
-    }
+        private void Display_sch_form()
+        {
+            using (sch_expense_form popup = new sch_expense_form())
+            {
+                if (popup.ShowDialog() == DialogResult.OK)
+                {
 
+                    string expenseName = popup.ExpenseName;
+                    decimal expenseAmount = popup.ExpenseAmount;
+                  
+
+                    try
+                    {
+                        string query = @"
+            INSERT INTO Scheduled_Expenses (user_id, sch_expense_name, sch_expense_amount)
+            VALUES (@UserId, @ExpenseName, @ExpenseAmount)";
+                        queryExecutor.ExecuteNonQuery(query, new
+                        {
+                            UserId = UserInfo.UserId,
+                            ExpenseName = expenseName,
+                            ExpenseAmount = expenseAmount
+                        });
+                        LoadScheduledExpensesAsCards();
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex.Message.Contains("Violation of PRIMARY KEY constraint"))
+                        {
+                            MessageBox.Show("Expense already added. Please use a different name",
+                                            "Duplicate Entry",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            // Default error message for other exceptions
+                            MessageBox.Show($"An error occurred: {ex.Message}",
+                                            "Error",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Error);
+                        }
+                    }
+
+
+
+
+                 
+                }
+            }
+        }
+
+        private void add_sch_exp_icon_Click_1(object sender, EventArgs e)
+        {
+            Display_sch_form();
+        }
+        private void label3_Click(object sender, EventArgs e)
+        {
+            Display_sch_form();
+        }
+
+
+    }
 }

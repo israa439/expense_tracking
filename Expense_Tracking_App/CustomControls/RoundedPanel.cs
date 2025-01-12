@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 public class RoundedPanel : Panel
 {
-    public int BorderRadius { get; set; } = 10; // Default border-radius
+    public int BorderRadius { get; set; } = 25; 
     public Color BorderColor { get; set; } = Color.Transparent;
     public Color BackgroundColor { get; set; } = Color.CornflowerBlue;
 

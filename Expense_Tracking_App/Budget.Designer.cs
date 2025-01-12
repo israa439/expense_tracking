@@ -224,9 +224,9 @@
             label15.ForeColor = Color.MidnightBlue;
             label15.Location = new Point(322, 537);
             label15.Name = "label15";
-            label15.Size = new Size(143, 30);
+            label15.Size = new Size(136, 30);
             label15.TabIndex = 45;
-            label15.Text = "to Savings";
+            label15.Text = "to Budget";
             // 
             // Added_budget_amount
             // 
@@ -277,7 +277,7 @@
             // 
             pictureBox3.Cursor = Cursors.Hand;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(1063, 18);
+            pictureBox3.Location = new Point(1117, 11);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(36, 32);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
@@ -291,7 +291,7 @@
             label2.Cursor = Cursors.Hand;
             label2.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label2.ForeColor = Color.MidnightBlue;
-            label2.Location = new Point(1099, 15);
+            label2.Location = new Point(1154, 9);
             label2.Name = "label2";
             label2.Size = new Size(169, 32);
             label2.TabIndex = 49;
@@ -302,7 +302,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1280, 705);
+            ClientSize = new Size(1345, 747);
             Controls.Add(label2);
             Controls.Add(pictureBox3);
             Controls.Add(Add_to_budget);
@@ -326,6 +326,7 @@
             Controls.Add(label14);
             Controls.Add(label1);
             Name = "Budget";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Budget";
             Load += Budget_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

@@ -211,7 +211,7 @@ namespace Expense_Tracking_App
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1254, 709);
+            ClientSize = new Size(1345, 747);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Controls.Add(signUpContainer);
